@@ -1,0 +1,47 @@
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Dependencies
+node_modules
+
+# Build output
+dist
+build
+backend/dist
+frontend/dist
+storage
+
+# Cache
+.vite
+.cache
+.eslintcache
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Database
+database.sqlite
+*.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# TypeScript build info
+tsconfig.tsbuildinfo
+vite.config.tsbuildinfo
