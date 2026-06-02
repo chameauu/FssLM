@@ -32,6 +32,24 @@ const openai = new OpenAI({
 });
 
 export async function transcribeAudio(filePath: string, provider: TranscriptionProvider = 'openai'): Promise<TranscriptionResult> {
+    // Demo mode - return mock data if DEMO_MODE is enabled
+    if (process.env.DEMO_MODE === 'true' || process.env.DEMO_MODE === '1') {
+        console.log('[DEMO MODE] Returning mock transcription');
+        const mockText = `Today we're going to explore machine learning fundamentals. Machine learning is a subset of artificial intelligence that enables systems to learn and improve from experience without being explicitly programmed. The three main types of machine learning are supervised learning, unsupervised learning, and reinforcement learning. Supervised learning uses labeled data where each training example has an associated label. This is useful for classification and regression tasks. Unsupervised learning works with unlabeled data and tries to find hidden patterns and structures.`;
+        
+        const result: TranscriptionResult = {
+            text: mockText,
+            provider: 'openai',
+            confidence: 0.92
+        };
+        
+        if (result.text && result.text.length > 50) {
+            result.studyMaterials = await generateStudyMaterials(result.text);
+        }
+        
+        return result;
+    }
+
     let result: TranscriptionResult;
 
     switch (provider) {
@@ -244,6 +262,49 @@ async function transcribeWithElevenLabs(filePath: string): Promise<Transcription
 
 async function generateStudyMaterials(transcriptionText: string): Promise<StudyMaterials> {
     try {
+        // Demo mode - return mock study materials
+        if (process.env.DEMO_MODE === 'true' || process.env.DEMO_MODE === '1') {
+            console.log('[DEMO MODE] Returning mock study materials');
+            return {
+                summary: "Machine learning fundamentals covering supervised, unsupervised, and reinforcement learning with key concepts and applications.",
+                keyPoints: [
+                    "Machine learning enables systems to learn from experience without explicit programming",
+                    "Three main types: supervised learning (labeled data), unsupervised learning (hidden patterns), reinforcement learning (rewards-based)",
+                    "Key metrics: accuracy, precision, recall, F1 score for model evaluation",
+                    "Important concepts: overfitting, underfitting, and bias-variance tradeoff"
+                ],
+                topics: ["Machine Learning", "Supervised Learning", "Unsupervised Learning", "Reinforcement Learning", "Model Evaluation"],
+                categories: ["Artificial Intelligence", "Data Science", "Computer Science"],
+                searchableKeywords: ["machine learning", "supervised", "unsupervised", "reinforcement", "AI", "neural networks"],
+                studyGuide: {
+                    mainConcepts: [
+                        "Machine learning enables learning from data without explicit programming",
+                        "Three main paradigms for different problem types",
+                        "Labeled data is essential for supervised learning",
+                        "Evaluation metrics determine model performance"
+                    ],
+                    importantTerms: [
+                        { term: "Supervised Learning", definition: "Learning from labeled data with input-output pairs" },
+                        { term: "Unsupervised Learning", definition: "Finding hidden patterns and structures in unlabeled data" },
+                        { term: "Reinforcement Learning", definition: "Learning through rewards and penalties from environment interaction" },
+                        { term: "Overfitting", definition: "Model memorizing training data instead of learning generalizable patterns" }
+                    ],
+                    questions: [
+                        "What is the difference between supervised and unsupervised learning?",
+                        "Why is labeled data important for supervised learning?",
+                        "What does overfitting mean and how can it be prevented?",
+                        "Name three key metrics for evaluating machine learning models"
+                    ],
+                    takeaways: [
+                        "Machine learning requires high-quality data and proper preprocessing",
+                        "Different problem types require different learning paradigms",
+                        "Model evaluation is critical for assessing real-world performance",
+                        "Iterative refinement and tuning leads to better models"
+                    ]
+                }
+            };
+        }
+
         const prompt = `Analyze this transcription and create organized study materials:
 
 TRANSCRIPTION:

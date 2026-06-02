@@ -16,6 +16,7 @@
     "node": ">=21.18.0"
   },
   "dependencies": {
+    "@chonkiejs/core": "^0.1.0",
     "@google-cloud/speech": "^7.2.0",
     "@google-cloud/text-to-speech": "^6.3.0",
     "@keyv/sqlite": "^4.0.5",
