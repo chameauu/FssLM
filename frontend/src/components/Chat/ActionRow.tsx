@@ -4,12 +4,14 @@ export default function ActionRow({
   onLearnMore,
   onStartQuiz,
   onCreatePodcast,
+  onGenerateFlashcards,
 }: {
   disabled?: boolean;
   onSummarize?: () => void;
   onLearnMore?: () => void;
   onStartQuiz?: () => void;
   onCreatePodcast?: () => void;
+  onGenerateFlashcards?: () => void;
 }) {
   return (
     <div className="w-full max-w-4xl mx-auto mt-6 flex flex-wrap justify-center gap-3 sm:gap-4">
@@ -22,6 +24,16 @@ export default function ActionRow({
             </svg>
           ),
           onClick: onSummarize
+        },
+        {
+          label: "Generate Flashcards",
+          icon: (
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+              <path d="M3 5.25V3.75A2.25 2.25 0 0 1 5.25 1.5h13.5A2.25 2.25 0 0 1 21 3.75v16.5A2.25 2.25 0 0 1 18.75 22.5H5.25A2.25 2.25 0 0 1 3 20.25V5.25Z" />
+              <path d="M6.75 6h10.5M6.75 10.5h10.5M6.75 15h7.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+            </svg>
+          ),
+          onClick: onGenerateFlashcards
         },
         {
           label: "Start Practice Quiz",

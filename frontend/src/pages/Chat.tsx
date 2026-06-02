@@ -329,6 +329,7 @@ export default function Chat() {
                 disabled={busy}
                 onSummarize={() => sendFollowup("Summarize the previous answer into 5–7 concise bullet points with bolded keywords.")}
                 onLearnMore={() => sendFollowup("Go deeper into this topic with advanced details, real-world examples, and a short analogy.")}
+                onGenerateFlashcards={() => sendFollowup("Generate comprehensive flashcards from the previous content. Create 8-12 flashcards covering key concepts, definitions, and important relationships. Include diverse question types: definition cards, application cards, connection cards, and metacognitive questions. Use pedagogically sound prompting to encourage deep understanding rather than rote memorization.")}
                 onStartQuiz={() => {
                   const t = topic || deriveTopicFromMarkdown(latestAssistantContent) || "General";
                   navigate(`/quiz?topic=${encodeURIComponent(t)}`, { state: { topic: t } });

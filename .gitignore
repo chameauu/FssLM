@@ -46,3 +46,5 @@ Thumbs.db
 tsconfig.tsbuildinfo
 vite.config.tsbuildinfo
 demo*
+demo
+docs
