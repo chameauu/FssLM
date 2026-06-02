@@ -7,8 +7,7 @@ import ActionRow from "../components/Chat/ActionRow";
 import FlashCards from "../components/Chat/FlashCards";
 import SelectionPopup from "../components/Chat/SelectionPopup";
 import Composer from "../components/Chat/Composer";
-import BagFab from "../components/Chat/BagFab";
-import BagDrawer from "../components/Chat/BagDrawer";
+
 import LoadingIndicator from "../components/Chat/LoadingIndicator";
 import { useCompanion } from "../components/Companion/CompanionProvider";
 
@@ -65,8 +64,6 @@ export default function Chat() {
   const [chatId, setChatId] = useState(initialChatId);
   const [messages, setMessages] = useState<ChatMessage[] | undefined>([]);
   const [cards, setCards] = useState<FlashCard[]>([]);
-  const [bagOpen, setBagOpen] = useState(false);
-  const [bag, setBag] = useState<BagItem[]>([]);
   const [selected, setSelected] = useState<{ text: string; x: number; y: number } | null>(null);
   const [busy, setBusy] = useState(false);
   const [connecting, setConnecting] = useState<boolean>(!!(initialChatId || initialQuestion));
@@ -361,8 +358,6 @@ export default function Chat() {
       />
 
       <Composer disabled={busy} onSend={sendFollowup} />
-      <BagFab count={bag.length} onClick={() => setBagOpen(true)} />
-      <BagDrawer open={bagOpen} items={bag} onClose={() => setBagOpen(false)} onClear={clearBag} />
     </div>
   );
 }

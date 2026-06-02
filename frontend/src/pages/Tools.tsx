@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import SmartNotes from "../components/Tools/SmartNotes"
 import PodcastGenerator from "../components/Tools/PodcastGenerator"
 import Transcriber from "../components/Tools/Transcriber"
-import ComingSoon from "../components/Tools/ComingSoon"
 
 export default function Tools() {
   return (
@@ -30,7 +29,6 @@ export default function Tools() {
           <SmartNotes />
           <PodcastGenerator />
           <Transcriber />
-          <ComingSoon />
         </div>
       </div>
     </div>

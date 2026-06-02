@@ -45,3 +45,4 @@ Thumbs.db
 # TypeScript build info
 tsconfig.tsbuildinfo
 vite.config.tsbuildinfo
+demo*

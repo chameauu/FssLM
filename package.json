@@ -5,10 +5,13 @@
     "build": "tsc -p backend/tsconfig.json",
     "start": "node backend/dist/src/core/index.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "demo": "npx tsx demo-automation.ts",
+    "demo:quick": "npx tsx demo-quick.ts",
+    "demo:chat": "npx tsx demo/chat-demo.ts",
+    "demo:agent": "npx tsx demo/chat-demo-agent.ts"
   },
-  "authors": [
-  ],
+  "authors": [],
   "engines": {
     "node": ">=21.18.0"
   },
@@ -42,6 +45,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.5.1",
+    "playwright": "^1.60.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.5",
     "typescript": "^5.8.3",
